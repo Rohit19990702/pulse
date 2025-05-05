@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: pulsewatch
+    runtime: python
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+      python manage.py migrate
+    startCommand: gunicorn pulsewatch.wsgi
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: pulsewatch.settings
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: "pulsewatch.onrender.com"
+      - fromDatabase:
+          name: pulsewatch-db
+          property: connectionString
+          key: DATABASE_URL
+
+databases:
+  - name: pulsewatch-db
+    plan: free
