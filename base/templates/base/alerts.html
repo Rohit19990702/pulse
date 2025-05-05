@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% load tz %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>{{ alert.name }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7fa;
+        }
+
+        .alert-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #2b2d42;
+        }
+
+        .logs {
+            background: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #2b2d42;
+            font-family: monospace;
+            margin-top: 20px;
+        }
+
+        .chatbox {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .message {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .message:last-child {
+            border-bottom: none;
+        }
+
+        .username {
+            font-weight: bold;
+            color: #2b2d42;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 10px;
+            background-color: #2b2d42;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
+            color: #2b2d42;
+        }
+    </style>
+</head>
+<body>
+    <div class="alert-box">
+        <h2>{{ alert.name }}</h2>
+        <p>{{ alert.description }}</p>
+        <div class="logs">
+            {% for log in alert.logs %}
+                <p>{{ log }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="chatbox">
+        <h3>Discussion</h3>
+        {% for msg in messages %}
+            <div class="message">
+                <span class="username">{{ msg.username }}</span>:
+                <p>{{ msg.content }}</p>
+                <small>{{ msg.timestamp|localtime|date:"M d, Y H:i:s" }}</small>
+
+            </div>
+        {% empty %}
+            <p>No messages yet. Be the first to start the conversation!</p>
+        {% endfor %}
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Your name (optional)" />
+            <textarea name="content" rows="3" placeholder="Type your message..." required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <a href="/" class="back-link">← Back to Dashboard</a>
+</body>
+</html>

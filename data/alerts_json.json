@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "name": "Disk Space Alert",
+        "description": "This alert indicates that the system has detected low available disk space. Temporary files, logs, and cache data may need to be cleared.",
+        "logs": [
+            "2025-05-01 09:00: Low disk space warning triggered",
+            "2025-05-01 09:15: User cleanup performed on temporary files",
+            "2025-05-01 09:45: Disk space recovered by 2GB"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Memory Usage Exceeded",
+        "description": "The system's memory usage has surpassed safe operational limits. Excessive memory consumption can lead to degraded performance.",
+        "logs": [
+            "2025-05-01 10:00: Memory usage exceeded 90%",
+            "2025-05-01 10:30: Increased usage detected by process ID 12345",
+            "2025-05-01 11:00: Memory leak identified in service X"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Network Latency High",
+        "description": "This alert indicates unusually high network latency, which could degrade application performance or cause connection timeouts.",
+        "logs": [
+            "2025-05-01 12:00: Network latency over 100ms detected",
+            "2025-05-01 12:10: Route optimization in progress",
+            "2025-05-01 12:30: Latency reduced by 20% after route update"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "CPU Overload",
+        "description": "CPU usage is consistently over the threshold, which may lead to system slowdowns or crashes. Immediate action required to prevent damage.",
+        "logs": [
+            "2025-05-01 14:00: CPU usage exceeded 95%",
+            "2025-05-01 14:30: Load balanced across additional server",
+            "2025-05-01 15:00: CPU usage back to normal (80%)"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Database Connection Failure",
+        "description": "The system failed to establish a connection to the database, potentially affecting service availability and data retrieval.",
+        "logs": [
+            "2025-05-01 16:00: Database connection timeout error",
+            "2025-05-01 16:10: Database credentials updated",
+            "2025-05-01 16:30: Connection re-established successfully"
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Authentication Failure",
+        "description": "Multiple failed login attempts detected. This could indicate a brute force attack or incorrect credentials.",
+        "logs": [
+            "2025-05-01 17:00: 5 failed login attempts within 5 minutes",
+            "2025-05-01 17:05: User account temporarily locked",
+            "2025-05-01 17:30: Account recovery initiated"
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Service X Down",
+        "description": "Critical service X is down and impacting production. Immediate investigation is required to restore functionality.",
+        "logs": [
+            "2025-05-01 18:00: Service X crashed unexpectedly",
+            "2025-05-01 18:15: Restarting service X",
+            "2025-05-01 18:45: Service X restored"
+        ]
+    },
+    {
+        "id": 8,
+        "name": "High Disk I/O",
+        "description": "Disk I/O operations are unusually high, which may cause system performance degradation or slow application response times.",
+        "logs": [
+            "2025-05-01 19:00: Disk I/O rate exceeded 500MB/s",
+            "2025-05-01 19:30: Identified process causing high disk usage",
+            "2025-05-01 20:00: High disk usage reduced by 60%"
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Unauthorized Access Attempt",
+        "description": "An unauthorized user attempted to access restricted resources. Investigate immediately to prevent security breaches.",
+        "logs": [
+            "2025-05-01 21:00: Unauthorized access attempt detected",
+            "2025-05-01 21:05: User credentials flagged",
+            "2025-05-01 21:30: Access request denied and blocked"
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Backup Failed",
+        "description": "The scheduled backup operation failed. Ensure that the backup system is operational to prevent data loss.",
+        "logs": [
+            "2025-05-01 22:00: Backup failed due to insufficient storage",
+            "2025-05-01 22:15: Backup location increased by 500GB",
+            "2025-05-01 22:30: Backup completed successfully"
+        ]
+    }
+]

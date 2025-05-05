@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}PulseWatch | AI Infra Alerts{% endblock %}</title>
+  
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- CSS -->
+  <style>
+    :root {
+      --primary: #0f172a;
+      --secondary: #1e293b;
+      --accent: #6366f1;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,0.05);
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--secondary);
+    }
+
+    header {
+      background: linear-gradient(90deg, #0f172a, #1e40af);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 2rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .container {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at top right, #6366f160 0%, transparent 70%);
+      transition: all 0.5s ease;
+      z-index: 0;
+    }
+
+    .card:hover::before {
+      top: -20%;
+      right: -20%;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      z-index: 1;
+      position: relative;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      z-index: 1;
+      position: relative;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 1rem;
+      }
+
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+
+      main {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+
+{% include 'navbar.html' %}
+  <main>
+    {% block content %}
+    <div class="container">
+      <div class="card">
+        <h3>Welcome to PulseWatch</h3>
+        <p>PulseWatch is your intelligent infrastructure monitoring tool powered by AI. Explore system alerts and stay ahead of failures.</p>
+      </div>
+    </div>
+    {% endblock %}
+  </main>
+
+  <footer>
+    &copy; {{ now|date:"Y" }} PulseWatch — Built with ❤️ using Django + GPT
+  </footer>
+
+</body>
+</html>
