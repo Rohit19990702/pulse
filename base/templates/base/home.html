@@ -85,12 +85,16 @@
       color: #aaa;
     }
   </style>
+
+  {% include 'navbar.html' %}
+
 </head>
 <body>
+  {% if user.is_authenticated %}
+    
     {% block content %}
-  <header>
-    <h1>Dashboard</h1>
-  </header>
+    {% include 'navbar.html' %}
+ 
 
   <div class="container">
     <div class="grid">
@@ -108,5 +112,11 @@
     &copy; 2025 PulseWatch. All rights reserved.
   </div>
   {% endblock %}
+ 
+  {% else %}
+  <script>
+    window.location.href = "{% url 'intro' %}";
+  </script>
+  {% endif %}
 </body>
 </html>

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     "base",
 
+    'widget_tweaks',
     
 ]
 
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'pulsewatch.middleware.NoCacheMiddleware',
 ]
 
 ROOT_URLCONF = "pulsewatch.urls"
@@ -136,3 +138,5 @@ USE_TZ = True
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # STATIC_URL = '/static/'
 ALLOWED_HOSTS = ['pulse-ptue.onrender.com', 'localhost', '127.0.0.1']
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/login/'
