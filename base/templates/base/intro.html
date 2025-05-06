@@ -2,6 +2,9 @@
 {% load static %}
 
 {% block content %}
+{% if user.is_authenticated %}
+{% include 'navbar.html' %}
+{% endif %}
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
 

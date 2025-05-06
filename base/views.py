@@ -9,18 +9,19 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
 
-
+@never_cache
 def intro(request):
     return render(request, "base/intro.html")
 
 # Load alerts from JSON
+
 def load_alerts_from_file():
     json_path = os.path.join(settings.BASE_DIR, 'data', 'alerts_json.json')
     with open(json_path, 'r') as f:
         return json.load(f)
+
 @login_required
 @never_cache
-
 def home(request):
     alerts = load_alerts_from_file()
     context = {'alertings': alerts}
@@ -43,7 +44,6 @@ def alerts(request, pk):
 
     context = {'alert': alert, 'messages': messages}
     return render(request, "base/alerts.html", context)
-
 
 def signup_view(request):
     if request.method == 'POST':
@@ -71,9 +71,8 @@ def login_view(request):
         form = AuthenticationForm()
     return render(request, 'base/login.html', {'form': form})
 
-@login_required
 @never_cache
 def logout_view(request):
     logout(request)
-    return render(request, 'base/logout.html')  # Instead of redirect('login')
+    return redirect('intro')  # redirect instead of rendering logout.html
 
