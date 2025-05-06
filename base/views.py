@@ -44,8 +44,7 @@ def alerts(request, pk):
     context = {'alert': alert, 'messages': messages}
     return render(request, "base/alerts.html", context)
 
-@login_required
-@never_cache
+
 def signup_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
