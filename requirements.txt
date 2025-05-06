@@ -5,3 +5,4 @@ whitenoise
 djangorestframework
 python-decouple
 dj-database-url
+django-widget-tweaks
